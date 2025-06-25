@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { products } from "@/mock-data/products";
 import { reviews } from "@/mock-data/reviews";
@@ -30,10 +30,11 @@ const REVIEWS_PER_PAGE = 5;
 export default function ProductDetailsPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const product = products.find((p) => p.id === params.id);
-  const productReviews = reviews.filter((r) => r.productId === params.id);
+  const { id } = React.use(params);
+  const product = products.find((p) => p.id === id);
+  const productReviews = reviews.filter((r) => r.productId === id);
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
