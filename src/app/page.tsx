@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,8 +10,26 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ShoppingBag, Heart, User, Package } from "lucide-react";
+import { useEffect } from "react";
 
 export default function HomePage() {
+  useEffect(() => {
+    const f = async () => {
+      const res = await fetch("https://api.example.com/user", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+      console.log(data);
+    };
+
+    f();
+    // console.log("fetching data...");
+  });
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
