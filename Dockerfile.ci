@@ -16,7 +16,12 @@ FROM node:18-alpine AS production
 
 WORKDIR /app
 
-COPY --from=build /app/out ./
+# Copy the compiled Next.js output
+COPY --from=builder /app/.next/standalone /app/.next/standalone
+COPY --from=builder /app/.next/static /app/.next/static
+
+# Copy the public assets
+COPY --from=builder /app/public /app/public
 
 EXPOSE 3000
 
