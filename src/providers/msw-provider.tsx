@@ -19,6 +19,10 @@ export function MSWProvider({ children }: { children: ReactNode }) {
     f();
   }, []);
 
+  if (process.env.NODE_ENV !== "development") {
+    return <>{children}</>;
+  }
+
   return (
     <>
       {workerReady ? (
