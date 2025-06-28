@@ -1,3 +1,4 @@
+import { products } from "@/mock-data/products";
 import { http, HttpResponse } from "msw";
 
 export const handlers = [
@@ -7,5 +8,10 @@ export const handlers = [
       firstName: "John",
       lastName: "Maverick",
     });
+  }),
+
+  // GET /products
+  http.get("https://api.example.com/products", () => {
+    return HttpResponse.json(products);
   }),
 ];

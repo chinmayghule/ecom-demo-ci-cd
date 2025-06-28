@@ -1,11 +1,10 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
+import { brands, categories } from "@/mock-data/products";
 
 interface IFilterSidebar {
-  categories: string[];
   selectedCategories: string[];
   toggleCategory: (category: string) => void;
-  brands: string[];
   selectedBrands: string[];
   toggleBrand: (brand: string) => void;
   showInStockOnly: boolean;
@@ -14,10 +13,8 @@ interface IFilterSidebar {
 }
 
 function FilterSidebar({
-  categories,
   selectedCategories,
   toggleCategory,
-  brands,
   selectedBrands,
   toggleBrand,
   showInStockOnly,
